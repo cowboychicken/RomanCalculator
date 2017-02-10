@@ -18,19 +18,19 @@ private:
     DerNode *prev;
 
 public:
-    //Constructors
+                                                                                                //Constructors
     DerNode();
     DerNode(string);
 
     ~DerNode();
 
-    //Accessors
+                                                                                                //Accessors
     DerNode* getNext() const {return next;};
     DerNode* getPrev() const {return prev;};
 
-    //Mutators
+                                                                                                //Mutators
     void setNext(DerNode*);
     void setPrev(DerNode*);
 };
 
-#endif // DERNODE_H
+#endif /*__DERNODE_H__*/

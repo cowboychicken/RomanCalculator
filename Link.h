@@ -18,20 +18,20 @@ private:
     DerNode *tail;
 
 public:
-    //Constructors
+                                                                                                    //Constructors
     Link();
 
     ~Link();
 
-    //Accessors
+                                                                                                    //Accessors
     DerNode* getHead() const {return head;};
     DerNode* getTail() const {return tail;};
 
-    //Mutators
+                                                                                                    //Mutators
     void setHead(DerNode*);
     void setTail(DerNode*);
 
-    //Overloaded operators
+                                                                                                    //Overloaded operators
     void operator += (DerNode*);
     void operator -- ();
     void operator -- (int );
@@ -47,4 +47,4 @@ public:
 
 
 
-#endif // LINK_H
+#endif /*__LINK_H__*/

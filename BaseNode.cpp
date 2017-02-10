@@ -9,31 +9,31 @@
 
 using namespace std;
 
-BaseNode::BaseNode(){       //Default constructor
-    arabic = 9999;          //I am using 9999 to filter out nodes that are invalid.
+BaseNode::BaseNode(){                                                                       //Default constructor
+    arabic = 9999;                                                                          //I am using 9999 to filter out nodes that are invalid.
     updateRoman();
 }
 
-BaseNode::BaseNode(string letters){      //if their is a possibility the string is an arabic numeral, string will be converted and stored.
-                                                //sets arabic to 9999 if invalid
+BaseNode::BaseNode(string letters){                                                         //if their is a possibility the string is an arabic numeral, string will be converted and stored.
+                                                                                            //sets arabic to 9999 if invalid
     if (isdigit(letters[0]) == 1 ){
         int digits;
-        if ( testArabic ( letters ) ){      //tests if characters are all digits
+        if ( testArabic ( letters ) ){                                                      //tests if characters are all digits
             istringstream convert(letters);
             convert >> digits;
-                if ( testArabicRange(digits)){           //tests if interger is in range 1-4999
+                if ( testArabicRange(digits)){                                              //tests if interger is in range 1-4999
                     setArabic(digits);
                 }
                 else { setArabic(9999);}
         }
         else { setArabic(9999);}
     }
-    else{                                           //Else if a possible Roman numeral
+    else{                                                                                   //Else if a possible Roman numeral
       if (  testRoman(letters)){
-        setRoman ( letters);                    //If valid Roman numeral, set roman and update arabic
+        setRoman ( letters);                                                                //If valid Roman numeral, set roman and update arabic
         updateArabic(letters);
       }
-      else { setArabic(9999);}              //If not valid roman, set to 9999 to be filtered out.
+      else { setArabic(9999);}                                                              //If not valid roman, set to 9999 to be filtered out.
     }
 }
 
@@ -49,9 +49,9 @@ void BaseNode::setRoman(string y){
     updateArabic(y);
 }
 
-void BaseNode::updateArabic(string RomanLine){          //This function will convert a string of roman numerals to arabic.
+void BaseNode::updateArabic(string RomanLine){                                              //This function will convert a string of roman numerals to arabic.
     int sum = 0;
-    for (int i=0; i< RomanLine.size() ; i++){       //This loop ensures that the entire of string of roman numerals gets scanned
+    for (int i=0; i< RomanLine.size() ; i++){                                               //This loop ensures that the entire of string of roman numerals gets scanned
         if (RomanLine[i] == 'M'){
             sum +=1000;
         }
@@ -61,7 +61,7 @@ void BaseNode::updateArabic(string RomanLine){          //This function will con
         else if (RomanLine[i] == 'C' && (RomanLine[i+1] == 'M' || RomanLine[i+1] == 'D')){
             sum -=100;
         }
-        else if (RomanLine[i] == 'C'){              //used AND and OR operators to build special cases.
+        else if (RomanLine[i] == 'C'){                                                      //used AND and OR operators to build special cases.
             sum +=100;
         }
         else if (RomanLine[i] == 'L'){
@@ -88,9 +88,9 @@ void BaseNode::updateArabic(string RomanLine){          //This function will con
 
 void BaseNode::updateRoman(){
 
-    string newRoman="";     //ensure newRoman string is empty.
+    string newRoman="";                                                                     //ensure newRoman string is empty.
 
-        int Thousands = arabic /1000;             //These equations are for figuring out how much is in each tens place.
+        int Thousands = arabic /1000;                                                       //These equations are for figuring out how much is in each tens place.
         int Hundreds = (arabic - Thousands*1000 )/100;
         int Tens = (arabic - Thousands*1000 - Hundreds*100) /10;
         int Ones = (arabic - Thousands*1000 - Hundreds*100 - Tens*10) /1;
@@ -161,7 +161,7 @@ void BaseNode::updateRoman(){
         roman = newRoman;
 }
 
-bool BaseNode::testRoman (string input){              // returns 1 if valid roman numeral
+bool BaseNode::testRoman (string input){                                                    // returns 1 if valid roman numeral
     bool valid = true;
     int length = input.length() ;
     for ( int i =0 ; i <= (length-1); i++){
@@ -172,7 +172,7 @@ bool BaseNode::testRoman (string input){              // returns 1 if valid roma
     return valid;
 }
 
-bool BaseNode::testArabic (string input){       //returns 1 if valid arabic numeral entry
+bool BaseNode::testArabic (string input){                                                   //returns 1 if valid arabic numeral entry
 
     bool valid = true;
     int length, i;
@@ -186,7 +186,7 @@ bool BaseNode::testArabic (string input){       //returns 1 if valid arabic nume
     return valid;
 }
 
-bool BaseNode::testArabicRange (int input){      //returns 1 if in valid range
+bool BaseNode::testArabicRange (int input){                                                 //returns 1 if in valid range
 
     bool valid = true;
     if ( !(input >= 1 && input <=4999)){

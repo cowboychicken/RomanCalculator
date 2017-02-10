@@ -24,7 +24,7 @@ void Link::operator += (DerNode* right){
     }
     DerNode* cur = head;
     DerNode *prev = head;
-    while(cur)   // 1 -> 2 -> 2 -> 4
+    while(cur)                                                                                  // 1 -> 2 -> 2 -> 4
     {
         prev = cur;
         cur = cur->getNext();
@@ -35,18 +35,18 @@ void Link::operator += (DerNode* right){
     tail = right;
 }
 
-void Link::operator --(){        //prefix --LL
+void Link::operator --(){                                                                       //prefix --LL
     head = head->getNext();
     head->setPrev(nullptr);
 }
 
-void Link::operator --(int){         //post-fix LL--
+void Link::operator --(int){                                                                    //post-fix LL--
     tail = tail->getPrev();
     tail->setNext(nullptr);
 }
 
-void Link::printFile(){      //writes a list to a chosen file.
-    bubbleSort();           //Call sort
+void Link::printFile(){                                                                         //writes a list to a chosen file.
+    bubbleSort();                                                                               //Call sort
     DerNode* cur;
     cur = head;
     int position;
@@ -95,7 +95,7 @@ void Link::bubbleSort(){
     DerNode* cur;
     cur = head;
     /////
-    int length =0;              //captures size of list
+    int length =0;                                                                              //captures size of list
     while ( cur->getNext()){
         cur = cur->getNext();
         length ++;
@@ -109,7 +109,7 @@ void Link::bubbleSort(){
         DerNode* prev;
         prev = head;
 
-        if ( head->getArabic() > head->getNext()->getArabic()){    //compares first two nodes as the algorithm beneath skips the head.
+        if ( head->getArabic() > head->getNext()->getArabic()){                                 //compares first two nodes as the algorithm beneath skips the head.
             temp = head->getNext();
             head->setPrev(head->getNext());
             head->setNext(head->getNext()->getNext());
@@ -121,7 +121,7 @@ void Link::bubbleSort(){
         else {
             for( int i=2 ; i<= length ; i++ ){
                      cur = prev->getNext();
-                if (cur->getArabic() > cur->getNext()->getArabic() )  { //if value in front is lesser, then nodes will be rearranged.
+                if (cur->getArabic() > cur->getNext()->getArabic() )  {                         //if value in front is lesser, then nodes will be rearranged.
 
                     temp = cur->getNext();
                     cur->setPrev(cur->getNext());
@@ -140,7 +140,7 @@ void Link::bubbleSort(){
         }
     } while (swap);
     /////////////////
-                                //traverse to end and marks tail end
+                                                                                                //traverse to end and marks tail end
     cur = head;
     while ( cur->getNext()){
         cur = cur->getNext();
@@ -149,30 +149,30 @@ void Link::bubbleSort(){
     /////
 }
 
-int Link::getLength(DerNode* head){                         //captures size of list
+int Link::getLength(DerNode* head){                                                             //captures size of list
     int length =0;
     DerNode* cur;
     cur = head;
-    while ( cur->getNext()){            //traverses through and adds to a counter to keep track of length
+    while ( cur->getNext()){                                                                    //traverses through and adds to a counter to keep track of length
         cur = cur->getNext();
         length ++;
     }
     return length;
 }
 
-int Link::binarySearch ( int x){           //returns 1 if 'int' is found in list. search for x
+int Link::binarySearch ( int x){                                                                //returns 1 if 'int' is found in list. search for x
     Link headcopy;
     DerNode* cur;
     cur = head;
      /////
-    int length =0;          //captures size of list
+    int length =0;                                                                              //captures size of list
     while ( cur->getNext()){
         cur = cur->getNext();
         length ++;
     }
     /////
     cur = head;
-    for( int i =0 ; i <= getLength(head); i++){     //Creates copy of current list so that it wont be altered after search.
+    for( int i =0 ; i <= getLength(head); i++){                                                 //Creates copy of current list so that it wont be altered after search.
         string y = cur->getRoman();
         DerNode * nodecopy = new DerNode(y);
         headcopy += nodecopy;
@@ -198,18 +198,18 @@ int Link::binarySearch ( int x){           //returns 1 if 'int' is found in list
     }
     else {
         do {
-            if ( x == head2->getArabic()  ){                    // checks if new midpoint is equal to value in question
+            if ( x == head2->getArabic()  ){                                                    // checks if new midpoint is equal to value in question
                 found = 1;
                 return found;
             }
-            else if ( x > head2->getArabic()){                // if x is greater than midpoint, delete first half of list by moving front ptr to mid
+            else if ( x > head2->getArabic()){                                                  // if x is greater than midpoint, delete first half of list by moving front ptr to mid
 
                 head1 = head2;
                 for (int i =1; i <= getLength(head1); i +=2){
                     head2 = head2->getNext();
                 }
             }
-            else if ( x < head2->getArabic()){            //if x is less than midpoint, make midpoint point to nullptr set new midpoint
+            else if ( x < head2->getArabic()){                                                  //if x is less than midpoint, make midpoint point to nullptr set new midpoint
                 head2->setNext(nullptr);
                 head2 = head1;
                 for (int i = 2; i <= getLength(head1) ; i+=2){
@@ -231,11 +231,11 @@ int Link::binarySearch ( int x){           //returns 1 if 'int' is found in list
 void Link::deleteAny (int x){
 
     if (binarySearch(x) == 1){
-        //traverse and delete.
+                                                                                                //traverse and delete.
         DerNode* cur;
         cur = head;
         /////
-        int length =0;              //captures size of list
+        int length =0;                                                                          //captures size of list
         while ( cur->getNext()){
             cur = cur->getNext();
             length ++;
@@ -245,7 +245,7 @@ void Link::deleteAny (int x){
         DerNode* prev;
             prev = head;
         do{
-            if ( head->getArabic() == x){    //compares first  node to int X
+            if ( head->getArabic() == x){                                                       //compares first  node to int X
                 head = head->getNext();
                 head->setPrev(nullptr);
                 cout << x << " has been removed from the list." << endl << endl;
@@ -272,7 +272,7 @@ void Link::deleteAny (int x){
             }
         } while ( prev->getNext() != nullptr );
         /////////////////
-                                    //traverse to end and marks tail end
+                                                                                                //traverse to end and marks tail end
         cur = head;
         while ( cur->getNext()){
             cur = cur->getNext();

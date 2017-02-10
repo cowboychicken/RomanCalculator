@@ -6,12 +6,12 @@
 */
 #include "DerNode.h"
 
-DerNode::DerNode():BaseNode() {                 //Default constructor sets both ptrs to null
+DerNode::DerNode():BaseNode() {                                                             //Default constructor sets both ptrs to null
     next = nullptr;
     prev = nullptr;
 }
 
-DerNode::DerNode(string letters) : BaseNode(letters) {  //Calls basenode default constructor and passes string
+DerNode::DerNode(string letters) : BaseNode(letters) {                                      //Calls basenode default constructor and passes string
     next = nullptr;
     prev = nullptr;
 }

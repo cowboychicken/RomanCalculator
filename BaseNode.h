@@ -19,32 +19,31 @@ protected:
     string roman;
 
 public:
-    //Constructors
+                                                                                                //Constructors
     BaseNode();
     BaseNode(string);
 
     ~BaseNode();
 
-    //Accessors
+                                                                                                //Accessors
     int getArabic() const {return arabic;};
     string getRoman() const {return roman;};
 
-    //Mutators
+                                                                                                //Mutators
     void setArabic(int);
     void setRoman(string);
 
-    //Overloaded operators
+                                                                                                //Overloaded operators
     ostream operator << (ostream &strm);
     istream operator >> (istream &strm);
 
    virtual void updateArabic(string);
 
     void updateRoman();
-    bool testRoman(string);        // returns 1 if valid roman numeral
-    bool testArabic(string);      //returns 1 if valid arabic numeral entry
-    bool testArabicRange(int);      //returns 1 if in valid range
+    bool testRoman(string);                                                                     // returns 1 if valid roman numeral
+    bool testArabic(string);                                                                    //returns 1 if valid arabic numeral entry
+    bool testArabicRange(int);                                                                  //returns 1 if in valid range
 
 };
 
-#endif
-
+#endif  /*__BASENODE_H__*/
